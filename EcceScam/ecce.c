@@ -570,7 +570,7 @@ int yy_flex_debug = 0;
 char *yytext;
 #line 1 "ecce.l"
 #line 2 "ecce.l"
-  /* Find and add all integers and floats... */
+  /* Find and add all webadresses, emails, accounts and IBANs */
    int    mail_count = 0;
    int    webadress_count = 0;
    int    konto_count = 0;

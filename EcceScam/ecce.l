@@ -1,4 +1,4 @@
-  /* Find and add all integers and floats... */
+  /* Find and add all webadresses, emails, accounts and IBANs */
 
 %option noyywrap
 
