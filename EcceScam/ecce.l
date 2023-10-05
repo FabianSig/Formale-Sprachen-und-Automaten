@@ -6,6 +6,7 @@
 %{
    int    mail_count = 0;
    int    webadress_count = 0;
+   int    konto_count = 0;
 
 %}
 
@@ -18,6 +19,11 @@ DIR         (\/[a-zA-Z])+
 WEBADRESS   http:\/\/{DOMAIN}{PORT}?{DIR}?
 
 EMAIL       {STR}@{DOMAIN}
+
+KONTOSTR    K((onto(nummer)?)|(to(nr)?)|(Nr))
+KONTO       {KONTOSTR}.:?[ ]*[0-9]{1,10}
+
+
 
 %%
 
@@ -32,6 +38,11 @@ EMAIL       {STR}@{DOMAIN}
 {EMAIL}    { 
    printf( "Email: %s\n", yytext ); 
    mail_count++;
+               }
+
+{KONTO}    { 
+   printf( "KONTO: %s\n", yytext ); 
+   konto_count++;
                }
 
 \n|. { 
@@ -51,4 +62,5 @@ int main( int argc, char **argv )
    
    printf("\n\nTOTAL WEBADRESSES: %d\n", webadress_count);
    printf("TOTAL EMAILS: %d\n", mail_count);
+   printf("TOTAL KONTOS: %d\n", konto_count);
 }
