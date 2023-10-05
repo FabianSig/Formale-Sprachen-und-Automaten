@@ -12,10 +12,10 @@
 STR         [A-Za-z0-9_.∼-]+
 
 DOMAIN      ({STR}.)?{STR}.[a-zA-Z]+
-PORT        (:[0-9]+)?
+PORT        (:[0-9]+)
 DIR         (\/[a-zA-Z])+
 
-WEBADRESS   http:\/\/{DOMAIN}{PORT}{DIR}
+WEBADRESS   http:\/\/{DOMAIN}{PORT}?{DIR}?
 
 EMAIL       {STR}@{DOMAIN}
 
@@ -51,6 +51,6 @@ int main( int argc, char **argv )
    
    yylex();
    
-   printf("\n\n TOTAL WEBADRESSES: %d\n", webadress_count);
-   printf("TOTAL EMAILS: %d", mail_count);
+   printf("\n\nTOTAL WEBADRESSES: %d\n", webadress_count);
+   printf("TOTAL EMAILS: %d\n", mail_count);
 }
