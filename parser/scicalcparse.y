@@ -73,8 +73,8 @@ assign: REGISTER ASSIGN expr {regfile[$<regno>1] = $<val>3;
 
 expr: expr PLUS term {$<val>$ = $<val>1 + $<val>3;}
     | expr MINUS term {$<val>$ = $<val>1 - $<val>3;}
+    | MINUS factor {$<val>$ = 0.0 - $<val>2;}
     | term {$<val>$ =  $<val>1;};
-
 
 term: term MULT factor {$<val>$ = $<val>1 * $<val>3;}
     | term DIVI factor {$<val>$ = $<val>1 / $<val>3;}
@@ -84,6 +84,7 @@ term: term MULT factor {$<val>$ = $<val>1 * $<val>3;}
 factor: REGISTER {$<val>$ = regfile[$<regno>1];}
       | FLOAT  {$<val>$ =  $<val>1;}
       | OPENPAR expr CLOSEPAR {$<val>$ =  $<val>2;};
+      | MINUS factor {$<val>$ = 0.0 - $<val>2;}
 
 %%
 
